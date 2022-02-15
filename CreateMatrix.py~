@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 
 def initialize_with_ones(connections_file):
     big_matrix=np.empty((6012, 6012))
@@ -12,13 +11,6 @@ def initialize_with_ones(connections_file):
         big_matrix[first_index, second_index] = 1
 
     return big_matrix
-
-def change_rows(big_dataframe):
-    for i in range(nrow(big_dataframe)):
-        big_dataframe.iloc[i] = big_dataframe.iloc[i]/sum(big_dataframe.iloc[i])
-
-    return big_dataframe
-
 
 if __name__ == "__main__":
     connections_file = open("connections.dat")
