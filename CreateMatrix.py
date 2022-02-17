@@ -16,7 +16,9 @@ def initialize_with_ones(connections_file):
 
 def change_rows(big_dataframe):
     for i in range(big_dataframe.shape[0]):
-        big_dataframe.iloc[i] = big_dataframe.iloc[i]/sum(big_dataframe.iloc[i])
+        num_row_entries = sum(big_dataframe.iloc[i])
+        if(num_row_entries != 0):
+            big_dataframe.iloc[i] = big_dataframe.iloc[i]/num_row_entries
 
     return big_dataframe
 
