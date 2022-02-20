@@ -18,6 +18,9 @@ vector calculation.
 (5) Discuss the whether and how your final distribution depends on your initial choice of the
 distribution in your iterations.
 
+It does not matter. As long as the data is normalized the distribution vector will converge to the 
+correct stationary distribution.
+
 (6) In your iterations, what about if the summation of the distribution vector does not sum to 1?
 Discuss the possible consequence and whether a treatment is necessary (and how to develop a
 treatment).
