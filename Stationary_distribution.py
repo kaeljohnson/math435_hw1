@@ -52,6 +52,8 @@ def findDistribution(A):
                                                     '''
 
     stationary_distribution = np.linalg.lstsq(A, b, rcond=None)[0]
+
+    print(sum(stationary_distribution))
     
     
     return stationary_distribution
