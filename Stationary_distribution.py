@@ -52,13 +52,16 @@ def findDistribution(A):
                                                     '''
 
     stationary_distribution = np.linalg.lstsq(A, b, rcond=None)[0]
+
+    print(sum(stationary_distribution))
     
     
     return stationary_distribution
 
 
-A = np.array([[0.7, 0.2, 0.1],
-             [0.4, 0.6, 0.0],
-             [0.0, 1.0, 0.0]])
+
+file = open("transition_matrix.csv")
+A = np. loadtxt(file, delimiter=",")
+
     
 print(findDistribution(A))
