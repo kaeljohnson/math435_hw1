@@ -2,27 +2,20 @@ import numpy as np
 
 
 def fixedPointDistribution(T):
-    '''
 
+
+    '''
     We want to solve with fixed point iteration.
 
     x_* = Ax
 
     '''
-
-    
-    # run until we are inside our error bound
-    # or to 150 iterations
     error = 10e-12
     maxIteration = 300
-
-    #initial distribution
     n = len(T[0])
-    print(n)
     dist = np.ones(n)/n
 
     for i in range(maxIteration):
-        print(sum(dist))
         dist_prev = dist
         dist = np.dot(dist, T)
 
@@ -32,14 +25,8 @@ def fixedPointDistribution(T):
         
 
     normalized = dist/sum(dist)
-    print(sum(normalized))
 
     return normalized
-
-    
-    
-
-    
 
 def findDistributionMatrixEigenvalues(A):
 
@@ -101,11 +88,9 @@ def findDistributionMatrixEigenvalues(A):
     return stationary_distribution
 
 
+if __name__ == "__main__":
+    file = open("damped_transition_matrix.csv")
+    A = np.loadtxt(file, delimiter=",")
 
-file = open("damped_transition_matrix.csv")
-A = np.loadtxt(file, delimiter=",")
-
-
-    
-print(fixedPointDistribution(A))
-print(findDistributionMatrixEigenvalues(A))
+    ranks = fixedPointDistribution(A)
+    np.savetxt("rankings.csv", ranks, delimiter=",")
