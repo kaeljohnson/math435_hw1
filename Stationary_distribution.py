@@ -1,6 +1,48 @@
 import numpy as np
 
-def findDistribution(A):
+
+def fixedPointDistribution(T):
+    '''
+
+    We want to solve with fixed point iteration.
+
+    x_* = Ax
+
+    '''
+
+    
+    # run until we are inside our error bound
+    # or to 150 iterations
+    error = 10e-12
+    maxIteration = 300
+
+    #initial distribution
+    n = len(T[0])
+    print(n)
+    dist = np.ones(n)/n
+
+    for i in range(maxIteration):
+        print(sum(dist))
+        dist_prev = dist
+        dist = np.dot(dist, T)
+
+        acc = np.sum(np.abs(dist-dist_prev))/n 
+
+        if acc < error: break
+        
+
+    normalized = dist/sum(dist)
+    print(sum(normalized))
+
+    return normalized
+
+    
+    
+
+    
+
+def findDistributionMatrixEigenvalues(A):
+
 
     '''
             Stationary Distribution
@@ -60,8 +102,10 @@ def findDistribution(A):
 
 
 
-file = open("transition_matrix.csv")
-A = np. loadtxt(file, delimiter=",")
+file = open("damped_transition_matrix.csv")
+A = np.loadtxt(file, delimiter=",")
+
 
     
-print(findDistribution(A))
+print(fixedPointDistribution(A))
+print(findDistributionMatrixEigenvalues(A))
