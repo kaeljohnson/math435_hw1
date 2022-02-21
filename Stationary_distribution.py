@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def fixedPointDistribution(T):
@@ -15,16 +16,22 @@ def fixedPointDistribution(T):
     n = len(T[0])
     dist = np.ones(n)/n
 
+    accArr = []
+
     for i in range(maxIteration):
         dist_prev = dist
         dist = np.dot(dist, T)
 
         acc = np.sum(np.abs(dist-dist_prev))/n 
-
+        accArr.append(acc)
         if acc < error: break
         
 
     normalized = dist/sum(dist)
+
+    plt.plot(accArr)
+    plt.ylabel('accuracy')
+    plt.show()
 
     return normalized
 
